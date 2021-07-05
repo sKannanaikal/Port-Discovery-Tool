@@ -9,6 +9,9 @@ class portScanner:
 		self.reqPortScan = reqPortScan
 		self.target = target
 		self.open_ports = []
+		self.threads = []
+		for i in range(self.reqPortScan):
+			threading.Thread(target=scan, args=(i)).start()
 
 	def scan(port_num):
 		portConnection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -24,11 +27,6 @@ class portScanner:
 		port(s) have been found to be open on {target_machine}'''.format(requested_ports=self.reqPortScan, 
 		open_port_count=len(self.open_ports), target_machine=self.target))
 		print(open_ports)
-
-	def run():
-		scan()
-		displayResults()
-
 
 def main():
 	command = optparse.OptionParser()
