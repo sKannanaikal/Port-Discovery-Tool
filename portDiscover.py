@@ -1,6 +1,7 @@
 import socket
 import sys
 import optparse
+import threading
 
 class portScanner:
 
