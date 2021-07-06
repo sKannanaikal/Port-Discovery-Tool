@@ -35,7 +35,7 @@ def udpscan(port_num, scanner):
 	portConnection = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 	try:
 		portConnection.sendto(,(self.target, port_num))
-		data, addr = sock.recvfrom(1024)
+		data, addr = portConnection.recvfrom(1024)
 		if data != None:
 			print('[-] UDP Port: {port} is not open!'.format(port=port_num))
 		else:
